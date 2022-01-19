@@ -41,3 +41,9 @@ export default {
   },
 };
 </script>
+
+<style>
+ul.firebaseui-idp-list {
+  padding-left: 0px;
+}
+</style>

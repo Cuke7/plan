@@ -1,5 +1,7 @@
 export const state = () => ({
   user: false,
+  snackbar: false,
+  snackBarText: "",
 });
 
 export const mutations = {
@@ -14,6 +16,12 @@ export const mutations = {
     } else {
       state.user = false;
     }
+  },
+  updateSnackBar(state, val) {
+    state.snackbar = val;
+  },
+  updateSnackBarText(state, test) {
+    state.snackBarText = test;
   },
   //   ON_AUTH_STATE_CHANGED_MUTATION: (state, { authUser, claims }) => {
   //     if (authUser) {

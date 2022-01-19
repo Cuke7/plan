@@ -7,10 +7,10 @@
           icon
           v-bind="attrs"
           v-on="on"
-          width="35"
-          height="35"
+          width="30"
+          height="30"
         >
-          <v-avatar size="40" v-if="currentUser.photoURL">
+          <v-avatar size="30" v-if="currentUser.photoURL">
             <img v-bind:src="currentUser.photoURL" />
           </v-avatar>
           <v-icon v-else>mdi-account-circle</v-icon>

@@ -1,6 +1,39 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6"> </v-col>
+    <v-col cols="12" sm="8" md="6">
+      <v-row class="pa-4" justify="center">
+        <v-col cols="12">
+          <div v-for="(key, index) in eventKeys" :key="index">
+            <v-card
+              @click="$router.push('/' + key)"
+              v-if="eventList[key].owner.uid == currentUser.uid"
+              class="my-6 pa-4"
+            >
+              <v-card-title class="pa-0">{{
+                eventList[key].eventName
+              }}</v-card-title>
+              <div class="text-body-1">
+                {{ eventList[key].adress }}
+              </div>
+            </v-card>
+          </div>
+        </v-col>
+      </v-row>
+    </v-col>
+    <v-fab-transition>
+      <v-btn
+        color="primary"
+        absolute
+        bottom
+        right
+        fab
+        style="bottom: 16px"
+        nuxt
+        to="./newEvent"
+      >
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+    </v-fab-transition>
   </v-row>
 </template>
 
@@ -9,6 +42,10 @@ import { db, auth } from "~/plugins/firebase.js";
 import { ref, push, child, get, set } from "firebase/database";
 
 export default {
+  data: () => ({
+    eventList: {},
+    eventKeys: [],
+  }),
   computed: {
     currentUser() {
       return this.$store.state.user;
@@ -19,7 +56,7 @@ export default {
     //   eventName: "Puy du fou 2022",
     // };
     // this.createEvent(data);
-    // console.log(this.readEvents());
+    this.readEventsList();
   },
   methods: {
     signOut() {
@@ -35,11 +72,14 @@ export default {
     modifyEvent(id, data) {
       set(ref(db, "events/" + id), data);
     },
-    readEvents() {
-      get(child(ref(db), "events/-MtiO2s59QMPs5A67ZE8"))
+    readEventsList() {
+      get(child(ref(db), "events/"))
         .then((snapshot) => {
           if (snapshot.exists()) {
-            console.log(snapshot.val());
+            let eventList = snapshot.val();
+            console.log(eventList);
+            this.eventList = eventList;
+            this.eventKeys = Object.keys(eventList);
           } else {
             console.log("No data available");
           }

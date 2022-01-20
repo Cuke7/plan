@@ -62,6 +62,7 @@ export default {
   methods: {
     signOut() {
       console.log("signOut");
+      this.dialog = false;
       // this.$fireAuth.signOut()
       auth.signOut();
     },

@@ -1,5 +1,7 @@
 <template>
-  <div id="firebaseui-auth-container" class="py-12"></div>
+  <div>
+    <div id="firebaseui-auth-container" class="py-12"></div>
+  </div>
 </template>
 
 <script>
@@ -24,7 +26,7 @@ export default {
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
       ],
-      signInSuccessUrl: "/",
+      // signInSuccessUrl: "/",
       // tosUrl: '/tos',
       // privacyPolicyUrl: '/privacy',
       callbacks: {
@@ -38,6 +40,12 @@ export default {
     };
 
     ui.start("#firebaseui-auth-container", config);
+  },
+
+  computed: {
+    currentUser() {
+      return this.$store.state.user;
+    },
   },
 };
 </script>

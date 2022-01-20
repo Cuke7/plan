@@ -5,8 +5,8 @@
         <v-col cols="12">
           <div v-for="(key, index) in eventKeys" :key="index">
             <v-card
-              @click="$router.push('/' + key)"
-              v-if="eventList[key].owner.uid == currentUser.uid"
+              @click="$router.push('/' + key + '/home')"
+              v-if="eventList[key].members.hasOwnProperty(currentUser.uid)"
               class="my-6 pa-4"
             >
               <v-card-title class="pa-0">{{

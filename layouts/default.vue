@@ -7,7 +7,7 @@
     </v-app-bar>
     <v-main>
       <v-container>
-        <Nuxt />
+        <Nuxt v-if="authIsReady"/>
       </v-container>
     </v-main>
     <v-snackbar v-model="snackbar" timeout="5000">
@@ -26,9 +26,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "~/plugins/firebase.js";
 
 export default {
+  data: () => ({
+    authIsReady: false,
+  }),
   mounted: function () {
     this.$nextTick(function () {
       onAuthStateChanged(auth, (authUSer) => {
+        this.authIsReady = true;
         // console.log(authUSer);
         this.$store.commit("ON_AUTH_STATE_CHANGED_MUTATION", authUSer);
         if (authUSer) {

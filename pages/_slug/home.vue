@@ -65,17 +65,6 @@
               <v-icon right dark> mdi-share-variant </v-icon>
             </v-btn>
           </v-col>
-          <v-col cols="auto" class="px-0 mx-0">
-            <v-btn
-              color="secondary"
-              class="white--text"
-              @click="join()"
-              :disabled="!currentUser || joined"
-            >
-              Rejoindre
-              <v-icon right dark> mdi-send </v-icon>
-            </v-btn>
-          </v-col>
         </v-row>
 
         <div class="text-center" v-show="!currentUser">
@@ -116,16 +105,6 @@ export default {
     currentUser() {
       return this.$store.state.user;
     },
-    joined() {
-      if (this.eventData) {
-        let members = this.eventData.members;
-        if (members) {
-          return Object.keys(members).includes(this.currentUser.uid);
-        }
-      } else {
-        return false;
-      }
-    },
   },
   methods: {
     share() {
@@ -139,19 +118,6 @@ export default {
           .then(() => console.log("Shared!"))
           .catch((error) => console.log("Error sharing", error));
       }
-    },
-    join() {
-      set(
-        ref(db, "events/" + this.slug + "/members/" + this.currentUser.uid),
-        this.currentUser
-      ).then((e) => {
-        this.$store.commit(
-          "updateSnackBarText",
-          "Évenement rejoint avec succès !"
-        );
-        this.$store.commit("updateSnackBar", true);
-        this.$nuxt.refresh();
-      });
     },
   },
 };

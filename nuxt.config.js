@@ -15,7 +15,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ["~/assets/main.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ["~/plugins/firebase.js"],
@@ -43,7 +43,12 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: "en",
+      name: "Plan",
+      lang: "fr",
+      theme_color: "#1976d2",
+      background_color: "#1976d2",
+      short_name: "Plan",
+      display: "standalone",
     },
   },
 
@@ -67,5 +72,11 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    target: "spa",
+  },
+
+  generate: {
+    fallback: true,
+  },
 };

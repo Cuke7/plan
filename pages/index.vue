@@ -1,6 +1,9 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
+      <div class="text-center">
+        <sign-in v-if="!currentUser" />
+      </div>
       <v-row class="pa-4" justify="center">
         <v-col cols="12">
           <div v-for="(key, index) in eventKeys" :key="index">
@@ -30,6 +33,7 @@
         style="bottom: 16px"
         nuxt
         to="./newEvent"
+        v-if="currentUser"
       >
         <v-icon>mdi-plus</v-icon>
       </v-btn>

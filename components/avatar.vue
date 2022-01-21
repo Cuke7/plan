@@ -2,22 +2,15 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          v-if="currentUser"
-          icon
-          v-bind="attrs"
-          v-on="on"
-          width="30"
-          height="30"
-        >
-          <v-avatar size="30" v-if="currentUser.photoURL">
+        <v-btn icon v-bind="attrs" v-on="on" width="30" height="30">
+          <!-- <v-avatar size="30" v-if="currentUser.photoURL">
             <img v-bind:src="currentUser.photoURL" />
-          </v-avatar>
-          <v-icon v-else>mdi-account-circle</v-icon>
+          </v-avatar> -->
+          <v-icon>mdi-account-circle</v-icon>
         </v-btn>
-        <v-btn icon v-else nuxt to="./login">
+        <!-- <v-btn icon v-else nuxt to="./login">
           <v-icon>mdi-login</v-icon>
-        </v-btn>
+        </v-btn> -->
       </template>
 
       <v-card>
@@ -40,7 +33,9 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="red" text @click="signOut"> Déconnection</v-btn>
+          <v-btn color="red" text @click="signOut" v-if="currentUser">
+            Déconnection</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>

@@ -8,6 +8,7 @@
 import { auth } from "~/plugins/firebase.js";
 
 export default {
+  props: ["redirect_url"],
   mounted() {
     const firebaseui = require("firebaseui");
     require("firebaseui/dist/firebaseui.css");
@@ -26,7 +27,7 @@ export default {
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
       ],
-      // signInSuccessUrl: "/",
+      signInSuccessUrl: this.redirect_url,
       // tosUrl: '/tos',
       // privacyPolicyUrl: '/privacy',
       callbacks: {

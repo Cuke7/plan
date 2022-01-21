@@ -48,7 +48,7 @@
       </v-card-text>
 
       <v-textarea
-        class="ma-3"
+        class="ma-3 mx-4"
         outlined
         label="Description, détails pratiques, horaires... "
         hide-details
@@ -66,8 +66,8 @@ export default {
   layout: "subpage",
   data: () => ({
     details: "",
-    eventName: "Puy du fou, session 2022",
-    adress: "Au puy du Fou",
+    eventName: "",
+    adress: "",
     dateBegin: "",
     dateEnd: "",
     loading: false,

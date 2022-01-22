@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-toolbar-title>Plan</v-toolbar-title>
+    <v-app-bar color="primary" app>
+      <v-toolbar-title class="white--text">Plan</v-toolbar-title>
       <v-spacer></v-spacer>
       <avatar></avatar>
     </v-app-bar>
     <v-main>
       <v-container>
-        <Nuxt v-if="authIsReady"/>
+        <Nuxt v-if="authIsReady" />
       </v-container>
     </v-main>
     <v-snackbar v-model="snackbar" timeout="5000">

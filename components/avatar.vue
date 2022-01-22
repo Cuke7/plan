@@ -6,7 +6,7 @@
           <!-- <v-avatar size="30" v-if="currentUser.photoURL">
             <img v-bind:src="currentUser.photoURL" />
           </v-avatar> -->
-          <v-icon>mdi-account-circle</v-icon>
+          <v-icon color="white">mdi-account-circle</v-icon>
         </v-btn>
         <!-- <v-btn icon v-else nuxt to="./login">
           <v-icon>mdi-login</v-icon>

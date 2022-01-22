@@ -12,7 +12,7 @@
               v-if="eventList[key].members.hasOwnProperty(currentUser.uid)"
               class="my-6 pa-4"
             >
-              <v-card-title class="pa-0">{{
+              <v-card-title class="pa-0" style="word-break: normal">{{
                 eventList[key].eventName
               }}</v-card-title>
               <div class="text-body-1">
